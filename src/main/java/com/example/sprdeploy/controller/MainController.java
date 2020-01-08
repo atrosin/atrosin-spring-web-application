@@ -1,7 +1,6 @@
 package com.example.sprdeploy.controller;
 
 import com.example.sprdeploy.entities.Message;
-import com.example.sprdeploy.entities.Role;
 import com.example.sprdeploy.entities.User;
 import com.example.sprdeploy.repository.MessageRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -47,9 +46,7 @@ public class MainController {
         }
         model.addAttribute("messages",messages);
         model.addAttribute("filter",filter);
-        if (user.getRoles().contains(Role.ADMIN)){
-            return "/mainAdm";
-        }
+
         return "main";
     }
 
@@ -82,9 +79,7 @@ public class MainController {
 
         Iterable<Message> messages = messageRepository.findAll();
         model.put("messages",messages);
-        if (user.getRoles().contains(Role.ADMIN)){
-            return "/mainAdm";
-        }
+
         return "main";
     }
 
